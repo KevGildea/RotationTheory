@@ -8,18 +8,17 @@ import math
 
 def Vector_mapping_cross_product(vec1, vec2):
     """ Calculate the rotation matrix that maps unit vector a to align with unit vector b about an axis aligned with the cross product"""
-    a, b = (vec1 / np.linalg.norm(vec1)).reshape(3), (vec2 / np.linalg.norm(vec2)).reshape(3)
+    a, b = vec1 / np.linalg.norm(vec1), vec2 / np.linalg.norm(vec2)
     n = np.cross(a, b) / np.linalg.norm(np.cross(a, b))
-    adotb=np.dot(a, b)
-    rotation_matrix = np.array([[n[0]**2+(n[1]**2+n[2]**2)*(adotb),n[0]*n[1]*(1-adotb)-n[2]*np.linalg.norm(np.cross(a, b)),n[0]*n[2]*(1-adotb)+n[1]*np.linalg.norm(np.cross(a, b))],
-                                [n[0]*n[1]*(1-adotb)+n[2]*np.linalg.norm(np.cross(a, b)),n[1]**2+(n[0]**2+n[2]**2)*(adotb),n[1]*n[2]*(1-adotb)-n[0]*np.linalg.norm(np.cross(a, b))],
-                                [n[0]*n[2]*(1-adotb)-n[1]*np.linalg.norm(np.cross(a, b)),n[1]*n[2]*(1-adotb)+n[0]*np.linalg.norm(np.cross(a, b)),n[2]**2+(n[0]**2+n[1]**2)*(adotb)]])
+    rotation_matrix = np.array([[n[0]**2+(n[1]**2+n[2]**2)*(np.dot(a, b)),n[0]*n[1]*(1-np.dot(a, b))-n[2]*np.linalg.norm(np.cross(a, b)),n[0]*n[2]*(1-np.dot(a, b))+n[1]*np.linalg.norm(np.cross(a, b))],
+                                [n[0]*n[1]*(1-np.dot(a, b))+n[2]*np.linalg.norm(np.cross(a, b)),n[1]**2+(n[0]**2+n[2]**2)*(np.dot(a, b)),n[1]*n[2]*(1-np.dot(a, b))-n[0]*np.linalg.norm(np.cross(a, b))],
+                                [n[0]*n[2]*(1-np.dot(a, b))-n[1]*np.linalg.norm(np.cross(a, b)),n[1]*n[2]*(1-np.dot(a, b))+n[0]*np.linalg.norm(np.cross(a, b)),n[2]**2+(n[0]**2+n[1]**2)*(np.dot(a, b))]])
     return rotation_matrix
 
 
 def Vector_mapping_bisect(vec1, vec2):
     """ Calculate the rotation matrix that maps unit vector a to align with unit vector b about an axis aligned with norm(a) + norm(b)"""
-    a, b = (vec1 / np.linalg.norm(vec1)).reshape(3), (vec2 / np.linalg.norm(vec2)).reshape(3)
+    a, b = vec1 / np.linalg.norm(vec1), vec2 / np.linalg.norm(vec2)
     n = (a+b) / np.linalg.norm(a+b)
     θ = math.pi
     rotation_matrix = np.array([[n[0]**2+(n[1]**2+n[2]**2)*(np.cos(θ)),n[0]*n[1]*(1-np.cos(θ))-n[2]*np.sin(θ),n[0]*n[2]*(1-np.cos(θ))+n[1]*np.sin(θ)],
@@ -30,12 +29,11 @@ def Vector_mapping_bisect(vec1, vec2):
 
 def Vector_mapping_UDaxis(vec1, vec2, axis): 
     """ Calculate the rotation matrix that maps unit vector a to align with unit vector b along an user defined axis"""
-    a, b = (vec1 / np.linalg.norm(vec1)).reshape(3), (vec2 / np.linalg.norm(vec2)).reshape(3)
-    n = (axis / np.linalg.norm(axis)).reshape(3)
-    # project vectors to form a cone around the Euler axis
-    a, b = (np.cross(a,n) / np.linalg.norm(np.cross(a,n))).reshape(3), (np.cross(b,n) / np.linalg.norm(np.cross(b,n))).reshape(3)
-    θ = np.arccos(np.dot(a,b))
-    θ = θ*np.sign(np.dot(n, np.cross(a,b)))
+    a, b = vec1 / np.linalg.norm(vec1), vec2 / np.linalg.norm(vec2)
+    n = axis / np.linalg.norm(axis)
+    # project vectors to form the base of a right cone around the Euler axis
+    a, b = np.cross(a,n) / np.linalg.norm(np.cross(a,n)), np.cross(b,n) / np.linalg.norm(np.cross(b,n))
+    θ = np.arccos(np.dot(a,b))*np.sign(np.dot(n, np.cross(a,b)))
     rotation_matrix = np.array([[n[0]**2+(n[1]**2+n[2]**2)*(np.cos(θ)),n[0]*n[1]*(1-np.cos(θ))-n[2]*np.sin(θ),n[0]*n[2]*(1-np.cos(θ))+n[1]*np.sin(θ)],
                                 [n[0]*n[1]*(1-np.cos(θ))+n[2]*np.sin(θ),n[1]**2+(n[0]**2+n[2]**2)*(np.cos(θ)),n[1]*n[2]*(1-np.cos(θ))-n[0]*np.sin(θ)],
                                 [n[0]*n[2]*(1-np.cos(θ))-n[1]*np.sin(θ),n[1]*n[2]*(1-np.cos(θ))+n[0]*np.sin(θ),n[2]**2+(n[0]**2+n[1]**2)*(np.cos(θ))]])
