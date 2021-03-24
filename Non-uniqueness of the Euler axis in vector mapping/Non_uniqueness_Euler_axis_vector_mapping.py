@@ -1,4 +1,5 @@
 """ Implementation of the methods described in https://kevgildea.github.io/blog/Euler-Axis-Vector-Mapping/"""
+
 import numpy as np
 import matplotlib.pyplot as plt
 import mpl_toolkits.mplot3d as plt3d
@@ -29,7 +30,7 @@ def Vector_mapping_bisect(vec1, vec2):
 
 
 def Vector_mapping_Euler_Axis_Space(vec1, vec2): 
-    """ Calculate all rotation matrices that map unit vector a to align with unit vector b"""
+    """ Calculate all rotation matrices that map vector a to align with vector b"""
     a, b = (vec1 / np.linalg.norm(vec1)), (vec2 / np.linalg.norm(vec2))
     p1 = np.array([0,0,0])
     p2 = b / np.linalg.norm(b) + (a / np.linalg.norm(a))
