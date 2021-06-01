@@ -2,10 +2,7 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
-#import pandas as pd
 import mpl_toolkits.mplot3d as plt3d
-#from scipy.spatial.transform import Rotation as R
-#import math
 import copy
 import networkx as nx
 
