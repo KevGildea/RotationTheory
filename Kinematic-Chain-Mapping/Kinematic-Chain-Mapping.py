@@ -238,23 +238,23 @@ chain_a.append(['jnt_a4', np.array([[ 1, 0, 0, 0],
                                     [ 0, 1, 0, 0.2],
                                     [ 0, 0, 0, 1]])])
 
-chain_b.append(['jnt_a0', np.array([[ 1, 0, 0, 0],
+chain_b.append(['jnt_b0', np.array([[ 1, 0, 0, 0],
                                     [ 0, 1, 0, -0.2],
                                     [ 0, 0, 1, 0],
                                     [ 0, 0, 0, 1]])])
-chain_b.append(['jnt_a1', np.array([[ 1, 0, 0, 0],
+chain_b.append(['jnt_b1', np.array([[ 1, 0, 0, 0],
                                     [ 0, 1, 0, 0],
                                     [ 0, 0, 1, -0.2],
                                     [ 0, 0, 0, 1]])])             
-chain_b.append(['jnt_a2', np.array([[ 1, 0, 0, 0],
+chain_b.append(['jnt_b2', np.array([[ 1, 0, 0, 0],
                                     [ 0, 1, 0, -0.2],
                                     [ 0, 0, 1, -0.2],
                                     [ 0, 0, 0, 1]])])
-chain_b.append(['jnt_a3', np.array([[ 1, 0, 0, 0.5],
+chain_b.append(['jnt_b3', np.array([[ 1, 0, 0, 0.5],
                                     [ 0, 1, 0, 0],
                                     [ 0, 0, 1, 0],
                                     [ 0, 0, 0, 1]])])
-chain_b.append(['jnt_a4', np.array([[ 1, 0, 0, 0],
+chain_b.append(['jnt_b4', np.array([[ 1, 0, 0, 0],
                                     [ 0, 1, 0, -0.5],
                                     [ 0, 0, 1, 0],
                                     [ 0, 0, 0, 1]])])
