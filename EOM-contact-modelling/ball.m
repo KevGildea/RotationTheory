@@ -13,5 +13,3 @@ if pen <0
 else xdot(1) = g - ((k*pen)/m) -((c*x(1))/m); xdot(2)  = x(1);
 
 end
-
-
