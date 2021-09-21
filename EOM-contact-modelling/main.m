@@ -58,4 +58,3 @@ for n = 1:10:length(x)
           imwrite(imind,cm,filename,'gif', 'DelayTime', 0,'WriteMode','append');
       end
 end
-
