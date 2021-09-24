@@ -13,7 +13,7 @@ X0 = [0  0];
 
 % call ode23 function and feed relevant inputs
 OPTIONS = odeset('MaxStep',tstep); %set max integration timestep
-[tout,xout] = ode45('ball',tspan,X0,OPTIONS);
+[tout,xout] = ode23('ball',tspan,X0,OPTIONS);
 
 % plot position and velocity time history
 figure(1); subplot(2,1,1)
