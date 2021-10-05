@@ -1,4 +1,3 @@
-# 4B17 Week 4 Tutorial - Kinematic Differential Equations
 import matplotlib.pyplot as plt
 import numpy as np
 import mpl_toolkits.mplot3d as plt3d
