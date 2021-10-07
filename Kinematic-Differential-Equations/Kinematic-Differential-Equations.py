@@ -3,7 +3,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import mpl_toolkits.mplot3d as plt3d
-from scipy.linalg import qr
 import sys
 from math import isclose
 
