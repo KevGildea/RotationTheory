@@ -1,4 +1,4 @@
-""" Implementation of the methods described in https://kevgildea.github.io/blog/Kinematic-Differential-Equations/"""
+""" Implementation of the methods described in https://kevgildea.github.io/blog/Kinematic-differential-equations/"""
 
 import matplotlib.pyplot as plt
 import numpy as np
