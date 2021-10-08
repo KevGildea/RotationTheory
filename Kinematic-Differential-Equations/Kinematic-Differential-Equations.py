@@ -43,11 +43,11 @@ def EulerInt(A0,ω,r0,v,t_step,t_end):
         ω = At @ RevSkewSym(ω_tilda)
         ω_tilda = SkewSym(ω)
         At = At + t_step*(-ω_tilda @ At)
-        Ats.append(At)
         correction_matrix = (3*np.array([[1, 0, 0],[0, 1, 0],[0, 0, 1]]) - (At @ At.T))/2 # correction matrix to ensure that the rotation matrix is orthogonal (see http://www.euclideanspace.com/maths/algebra/matrix/orthogonal/ )
         At = correction_matrix @ At
         if isRotationMatrix(At)==False:
             sys.exit('Error: Chosen integration time step is too large - try a smaller value (generally a step of <=1e-2 is recommended)')
+        Ats.append(At)
         rt = rt + t_step*(At@v)
         rts.append(rt)
     return Ats,rts
