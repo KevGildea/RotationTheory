@@ -21,7 +21,7 @@ def isRotationMatrix(M):
 def SkewSym(a):
     """ Converts a 1x3 vector to a 3x3 skew symmetric matrix"""
     a_tilda = np.array([[0, -a[2], a[1]],
-                        [a[2], 0, a[0]],
+                        [a[2], 0, -a[0]],
                         [-a[1], a[0], 0]])
     return a_tilda
 
